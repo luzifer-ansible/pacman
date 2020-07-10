@@ -1,0 +1,12 @@
+---
+
+- name: Install Pacman packages
+  pacman:
+    force: '{{ item.force | default("no") }}'
+    name: '{{ item.name  }}'
+    recurse: '{{ item.recurse | default("no") }}'
+    state: '{{ item.state | default("present") }}'
+    upgrade: '{{ item.upgrade | default(omit) }}'
+  with_items: '{{ pacman_packages }}'
+
+...
