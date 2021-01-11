@@ -1,5 +1,10 @@
 ---
 
+- name: Refresh Pacman caches
+  pacman:
+    update_cache: true
+  when: pacman_update_cache
+
 - name: Install Pacman packages
   pacman:
     force: '{{ item.force | default("no") }}'
